@@ -103,37 +103,9 @@ Al arrancar por primera vez, el servicio `MapIngestionService` cargará la red a
 
 ---
 
-## 5. Guion Paso a Paso para la Grabación del Video de Demostración
 
-Sigue esta secuencia para demostrar con impacto visual el funcionamiento de los algoritmos en el video:
 
-### Escena 1: Presentación y Escenario Seco Basal (0:00 - 1:00)
-1. Abre el navegador en `http://localhost:8080`.
-2. Muestra el mapa interactivo de Villahermosa a pantalla completa sin marcas de agua.
-3. En el panel izquierdo (**Navegación A &rarr; B**), haz clic en el preset **Tabasco 2000** como Origen y **Gaviotas Norte** como Destino.
-4. Muestra la ruta trazada en azul: en condiciones secas, el algoritmo A* elige el camino más directo atravesando el Centro y el Puente Grijalva 1. Señala las métricas en pantalla (Distancia: ~2.4 km, Tiempo: ~4 min, Tramos evitados: 0).
-
-### Escena 2: Inyección de Tormenta Severa y Desvío Dinámico A* (1:00 - 2:15)
-1. Abre el panel lateral derecho de **"Modo Simulación (Demo)"**.
-2. Selecciona el cuadrante **"Este - Gaviotas / Margen Grijalva"** (zona baja con cota &lt; 4.0 msnm).
-3. Mueve el deslizador a **90 mm/h** (o haz clic en el botón *"90 mm/h - Tormenta Severa"*).
-4. **Efecto en vivo:** Muestra cómo el cuadrante se colorea de rojo carmesí.
-5. Haz clic en **"Recalcular Ruta Óptima (A*)"** en el panel izquierdo (con el modo *"Ruta Segura Anti-Inundación"* activo).
-6. **Resultado Algorítmico:** Explica cómo el algoritmo detecta la saturación hidráulica de la cota baja de Gaviotas y automáticamente desvía la ruta hacia arterias de mayor cota (mostrando el contador: *"Tramos inundados evitados: 1 o más"* y notificación toast en pantalla).
-
-### Escena 3: Crowdsourcing y Consenso Espacio-Temporal (2:15 - 3:30)
-1. En el panel de simulación, pulsa el botón **"Simular Ráfaga de Cortes (Quórum)"**.
-2. **Efecto en vivo:**
-   * Se disparan 3 reportes ciudadanos en un radio de 75 metros en la Zona Luz.
-   * El algoritmo de consenso evalúa la distancia Haversine (&lt; 200m) y la ventana temporal (&lt; 2h).
-   * Aparece inmediatamente en pantalla el círculo rojo discontinuo que representa la **"Alerta Confirmada por Quórum"**.
-   * Se muestra la notificación toast: *"¡Consenso alcanzado! 3 reportes ciudadanos confirmaron corte de agua en radio de 200m"*.
-3. Cambia a la pestaña **"Reporte Ciudadano"** en el panel izquierdo y muestra cómo un ciudadano puede reportar haciendo clic en cualquier calle.
-4. Finalmente, pulsa **"Restaurar Escenario Base (Seco)"** para demostrar la reactividad del sistema.
-
----
-
-## 6. Documentación Adicional
+## 5. Documentación Adicional
 Para la memoria técnica completa, diagramas formales Mermaid (Arquitectura Hexagonal, Clases UML y Modelo ER), formulaciones matemáticas y documentación exhaustiva del código fuente, consulta:
 * [docs/DOCUMENTACION_TECNICA.md](docs/DOCUMENTACION_TECNICA.md): Delimitación geográfica, diagramas de arquitectura hexagonal, modelo entidad-relación PostGIS y funciones de impedancia hidráulica.
 * [docs/CODIGO_FUENTE.md](docs/CODIGO_FUENTE.md): Manual técnico exhaustivo del código fuente (desglose de paquetes, clases, métodos, algoritmos A*, eventos, adaptadores, frontend modular y suite de pruebas).

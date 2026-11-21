@@ -35,3 +35,8 @@ target/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+### Office Temporary Files ###
+~$*.docx
+~$*.doc
+*.tmp

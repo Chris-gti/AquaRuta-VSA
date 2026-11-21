@@ -1,0 +1,24 @@
+services:
+  aquaruta-db:
+    image: postgis/postgis:16-3.4
+    container_name: aquaruta-postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aquaruta_db
+      POSTGRES_USER: aquaruta
+      POSTGRES_PASSWORD: aquaruta_secret
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - aquaruta_pgdata:/var/lib/postgresql/data
+      - ./docker/init-db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aquaruta -d aquaruta_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  aquaruta_pgdata:
+    name: aquaruta_pgdata
